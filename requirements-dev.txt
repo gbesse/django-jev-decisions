@@ -1,0 +1,3 @@
+# Purpose: Pin the runtime dependencies used for reproducible Django integration verification.
+Django==5.2.17
+httpx==0.28.1

@@ -1,0 +1,17 @@
+{
+  "description": "Synthetic response for a billing ticket; not a measured Jev result.",
+  "model": "jev-1.13.0",
+  "answers": {
+    "department": {
+      "type": "choice",
+      "choice": "billing",
+      "probabilities": {
+        "billing": 0.94,
+        "technical": 0.02,
+        "sales": 0.02,
+        "other": 0.02
+      },
+      "confidence": 0.8
+    }
+  }
+}

@@ -1,0 +1,15 @@
+# Purpose: Describe the reusable Django addon and its runtime dependencies.
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "django-jev-decisions"
+version = "0.1.0"
+description = "Versioned Jev decisions, durable jobs and review history in Django admin."
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["Django>=5.2,<6.2", "httpx>=0.28,<0.29"]
+[tool.setuptools.packages.find]
+include = ["jev_decisions*"]
+[project.urls]
+Repository = "https://github.com/gbesse/django-jev-decisions"
