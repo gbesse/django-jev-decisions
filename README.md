@@ -2,12 +2,12 @@
 
 Queue versioned model snapshots, reject stale results and review decision history in Django admin. Adds an explicit admin action to your existing models without changing their business data.
 
-**v0.1.1 experimental alpha · MIT · Python 3.11+**. Tested with Django 5.2.17 and SQLite. Independent community integration.
+**v0.1.2 experimental alpha · MIT · Python 3.11+**. Tested with Django 5.2.17 and SQLite. Independent community integration.
 
 ## Install and configure
 
 ```sh
-pip install 'git+https://github.com/gbesse/django-jev-decisions.git@v0.1.1'
+pip install 'git+https://github.com/gbesse/django-jev-decisions.git@v0.1.2'
 ```
 
 Add `jev_decisions` to `INSTALLED_APPS` and run `python manage.py migrate`. Configure a server-side key and registered policies:
@@ -49,6 +49,8 @@ Jobs move from queued to running, then succeeded, stale or failed. Source state 
 Unexpected failures persist, log, email configured Django `ADMINS` and propagate. Configure your normal Django email backend. Full snapshots and answers are stored; apply host permissions and retention. No source object is published or modified automatically.
 
 ## Try the stale-snapshot guard offline
+
+`DJANGO_SETTINGS_MODULE=tests.settings .venv/bin/python -m examples.two_ticket_demo` processes one unchanged synthetic ticket and rejects a changed ticket before inference. Only the current snapshot reaches the fixture provider. / Un ticket inchangé atteint la fixture, tandis que le ticket modifié est rejeté avant l'inférence. / Un ticket sin cambios llega a la fixture, mientras que el ticket modificado se rechaza antes de la inferencia.
 
 `DJANGO_SETTINGS_MODULE=tests.settings .venv/bin/python -m examples.stale_ticket_demo` queues a synthetic ticket, changes its source text, and shows that the old job becomes `stale` without invoking a provider. This uses in-memory SQLite and no API key. A production worker must still handle interrupted jobs and validate writes inside its own transaction.
 
